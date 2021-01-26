@@ -7,7 +7,6 @@ import Aux from '../../hoc/Aux';
 
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
-import orderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENTS_PRICES = {
     salad : 0.5,
@@ -81,8 +80,8 @@ class BurgerBuilder extends Component{
         this.updatePurchaseState(updatedIngredients);
     }
 
-    purchaseHandler =() =>{
-        this.setState()
+    purchaseHandler = () =>{
+        this.setState({purchasing: true});
     }
 
     render(){
@@ -94,7 +93,7 @@ class BurgerBuilder extends Component{
         }
         return(
             <Aux>
-                <Modal>
+                <Modal show={this.state.purchasing}>
                     <OrderSummary ingredients={this.state.ingredients}/>
                 </Modal>
                 <div>
@@ -106,7 +105,8 @@ class BurgerBuilder extends Component{
                     ingredientRemoved={this.removeIngredientHandler}
                     disabled = {disabledInfo}
                     price = {this.state.totalPrice}
-                    purchasable={this.state.purchasable}
+                    purchasable={this.purchaseHandler}
+                    ordered={this.state.purchasing}
                      />
 
                 </div>
