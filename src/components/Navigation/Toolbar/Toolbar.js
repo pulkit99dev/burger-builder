@@ -8,7 +8,7 @@ import Logo from '../../Logo/Logo';
 
 const toolbar = (props) =>(
     <header className={classes.Toolbar}>
-        <div>Menu</div>
+        <div><button onClick>Menu</button></div>
         <div className={classes.Logo}><Logo /></div>
         <nav className={classes.DesktopOnly}> <NavigationItems /> </nav>
     </header>
